@@ -5,12 +5,12 @@ require 'edst/document/version'
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = 'edst'
+  s.name        = 'edst-documents'
   s.summary     = 'EDST Document toolkit'
-  s.description = 'Extension for validating EDST documents.'
+  s.description = 'Extension for handling EDST documents.'
   s.date        = Time.now.to_date.to_s
   s.version     = EDST::Document::Version::STRING
-  s.homepage    = 'https://github.com/IceDragon200/edst-document/'
+  s.homepage    = 'https://github.com/IceDragon200/edst-documents/'
   s.license     = 'MIT'
 
   s.authors = ['Corey Powell']
