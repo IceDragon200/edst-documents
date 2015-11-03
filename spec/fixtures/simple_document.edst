@@ -1,0 +1,15 @@
+%%body
+{
+  %name Test Document 1
+  %%note
+  {
+    This is a basic test document
+  }
+  %%list
+  {
+    # This should not cause a list failure
+    --- Item 1
+    --- Item 2
+    --- Item 3
+  }
+}

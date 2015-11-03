@@ -2,13 +2,15 @@ require 'edst/document/base_validator'
 require 'edst/document/type_validator'
 
 module EDST
-  class Document
+  module Document
     class ListValidator < BaseValidator
       def initialize(child_validator)
         @child_validator = child_validator
       end
 
-      def validate(node, stats)
+      def validate(node, stats = nil)
+        check_node node
+
         node.each_child do |child|
           next if child.kind == :comment
           if child.kind != :ln
@@ -18,7 +20,7 @@ module EDST
         end
       end
 
-      Schemas.instance.register('list:string', new(Schemas.instance.get('string')))
+      register 'list:string', new(Schemas.get('string'))
     end
   end
 end

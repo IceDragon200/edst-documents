@@ -14,7 +14,7 @@ module EDST
       end
 
       def self.register(name)
-        Schemas.instance.register(name, self)
+        Schemas.register(name, self)
       end
     end
   end

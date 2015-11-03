@@ -16,6 +16,14 @@ module EDST
       def self.instance
         @instance ||= new
       end
+
+      def self.register(name, obj)
+        instance.register(name, obj)
+      end
+
+      def self.get(name)
+        instance.get(name)
+      end
     end
   end
 end

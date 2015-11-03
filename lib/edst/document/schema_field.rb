@@ -68,7 +68,7 @@ module EDST
 
       private def check_node_enum(stats, node)
         return unless @enum
-        unless @enum.any? { |v| node.value == v }
+        unless @enum.include?(node.value)
           create_error stats, ValidationError.new("Node #{node.debug_string} must have a value of [#{@enum.choice_join}]")
         end
       end

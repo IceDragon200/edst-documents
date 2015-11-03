@@ -11,7 +11,7 @@ module EDST
         data = {
           # '*' means any type
           type: options.fetch(:type, '*'),
-          key: name,
+          key: name.to_s,
           enum: options[:enum],
           # allow the node to be optional
           optional: options.fetch(:optional, false),
