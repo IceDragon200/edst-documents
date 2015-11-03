@@ -1,0 +1,7 @@
+*.gem
+/.sass-cache
+/.yardoc
+/coverage
+/doc
+Gemfile.lock
+__gemmy__
