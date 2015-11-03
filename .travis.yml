@@ -1,8 +1,8 @@
 language: ruby
 sudo: false
-#addons:
-#  code_climate:
-#    repo_token: 33abd30b94d24f008b94e6af7575a6f7a70c7bda6392d0f783b475029e546b5c
+addons:
+  code_climate:
+    repo_token: 00b7dc7ca5461ca7decc053db7cc9e918ebb95b770e32742414a268b20331e1c
 rvm:
 - 2.0
 - 2.1
