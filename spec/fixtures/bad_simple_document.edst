@@ -1,0 +1,9 @@
+%%body
+{
+  %name
+  %note
+  %%list
+  {
+    This should fail miserably
+  }
+}

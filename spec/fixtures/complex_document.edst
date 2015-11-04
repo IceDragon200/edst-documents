@@ -1,0 +1,45 @@
+# This is a test document, information here should not be taken serious, but I do love cookies :P
+%%user
+{
+  %name IceDragon
+  %age 9000
+  %gender Male
+  %%likes
+  {
+    --- Cookies
+    --- Ruby
+    --- World Domination
+  }
+  %%dislikes
+  {
+    --- Cookies (browser ones)
+    --- Ruby (when it doesn't work)
+    --- World Domination (when he isn't the one doing it)
+  }
+  %%things
+  {
+    %%thing
+    {
+      %name Thing 1
+    }
+    %%thing
+    {
+      %name Thing 2
+    }
+  }
+  %%notes
+  {
+    %%note
+    {
+      Some notes
+    }
+    %%note.description
+    {
+      IceDragon, is a dragon, who likes cookies.
+    }
+    %%note.stuff
+    {
+      And this is some other stuff
+    }
+  }
+}

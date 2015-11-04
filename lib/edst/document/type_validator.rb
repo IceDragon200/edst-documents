@@ -3,11 +3,15 @@ require 'edst/document/validation_error'
 
 module EDST
   module Document
+    # Validates a node's value with the given Class
     class TypeValidator < BaseValidator
+      # @param [Class] type
       def initialize(type)
         @type = type
       end
 
+      # @param [AST] node
+      # @param [Stats] stats
       def validate(node, stats = nil)
         check_node node
         unless node.value.is_a?(@type)

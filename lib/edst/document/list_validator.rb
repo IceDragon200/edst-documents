@@ -12,15 +12,24 @@ module EDST
         check_node node
 
         node.each_child do |child|
-          next if child.kind == :comment
-          if child.kind != :ln
+          case child.kind
+          when :comment
+            next
+          when :ln
+            @child_validator.validate(child, stats)
+          when :list
+            validate(child, stats)
+          else
             handle_error stats, ValidationError.new("expected #{node.debug_string} to be a :ln node")
           end
-          @child_validator.validate(child, stats)
         end
       end
 
-      register 'list:string', new(Schemas.get('string'))
+      def self.register(name, type)
+        super name, new(type)
+      end
+
+      register 'list:string', Schemas.get('string')
     end
   end
 end

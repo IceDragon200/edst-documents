@@ -1,10 +1,11 @@
 require 'edst/document/core_ext'
 require 'edst/document/validation_error'
 require 'edst/document/stats'
+require 'edst/document/base_validator'
 
 module EDST
   module Document
-    class SchemaField
+    class AstValidator < BaseValidator
       attr_reader :kind
       attr_reader :data
       attr_reader :type
@@ -12,6 +13,7 @@ module EDST
       attr_reader :allow_multiple
       attr_reader :allow_variants
 
+      # @param [Symbol] kind
       def initialize(kind, **options)
         @kind = kind
         @data = options
@@ -24,14 +26,13 @@ module EDST
         @key_pattern = /\A#{@key}\b/
       end
 
+      # @return [String]
       def to_s
         "#{kind}:#{key} : #{type}"
       end
 
-      def create_error(stats, err)
-        stats.errors << err
-      end
-
+      # @yieldparam [BaseValidator] field
+      # @return [Enumerator] if no block was given
       def each_child
         return to_enum :each_child unless block_given?
 
@@ -44,7 +45,7 @@ module EDST
         if stats.found_first
           unless @allow_multiple
             if @key == node.key
-              create_error stats, ValidationError.new("Multiple nodes of (#{child.ast_string}) are not allowed (offender: #{node.debug_string})")
+              handle_error stats, ValidationError.new("Multiple nodes of (#{child.ast_string}) are not allowed (offender: #{node.debug_string})")
             end
           end
 
@@ -53,7 +54,7 @@ module EDST
             # but if variants are not allowed, and the keys do not match, then that is considered an
             # error
             if @key != child.key
-              create_error stats, ValidationError.new("Variant nodes of (#{child.ast_string}) are not allowed (offender: #{node.debug_string})")
+              handle_error stats, ValidationError.new("Variant nodes of (#{child.ast_string}) are not allowed (offender: #{node.debug_string})")
             end
           end
         end
@@ -69,15 +70,31 @@ module EDST
       private def check_node_enum(stats, node)
         return unless @enum
         unless @enum.include?(node.value)
-          create_error stats, ValidationError.new("Node #{node.debug_string} must have a value of [#{@enum.choice_join}]")
+          handle_error stats, ValidationError.new("Node #{node.debug_string} must have a value of [#{@enum.choice_join}]")
         end
       end
 
+      # Determines if the node can be validated by this SchemaField
+      #
+      # @param [EDST::AST] node
+      # @return [Boolean] the node is valid
+      def is_valid_node?(node)
+        return false unless node.kind == @kind
+        return false unless node.key =~ @key_pattern
+        true
+      end
+
+      # Validates the given root node against the schema field
+      #
+      # @param [EDST::AST] root
+      # @param [Stats] givenstats
+      # @return [Stats]
       def validate(root, givenstats = nil)
+        check_node root
+
         stats = givenstats || Stats.new(self)
         root.each_child do |node|
-          next unless node.kind == @kind
-          next unless node.key =~ @key_pattern
+          next unless is_valid_node?(node)
 
           check_variant_or_multiple(stats, node)
           check_node_type(stats, node)
@@ -91,7 +108,7 @@ module EDST
           end
         end
         unless @optional || stats.found_first
-          create_error stats, ValidationError.new("No node of kind=#{@kind} and key=#{@key} found")
+          handle_error stats, ValidationError.new("No node of kind=#{@kind} and key=#{@key} found")
         end
         stats
       end

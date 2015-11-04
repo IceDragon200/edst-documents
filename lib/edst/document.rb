@@ -1,5 +1,6 @@
 require 'edst/document/schema'
-require 'edst/document/schema_field'
 require 'edst/document/type_validator'
 require 'edst/document/list_validator'
+require 'edst/document/ast_validator'
+require 'edst/document/schema_validator'
 require 'edst/document/helpers'
