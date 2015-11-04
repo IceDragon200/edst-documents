@@ -1,3 +1,4 @@
+require 'edst'
 require 'edst/ast'
 require 'edst/document/schemas'
 require 'edst/document/list_validator'
