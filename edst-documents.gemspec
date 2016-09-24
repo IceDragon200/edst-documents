@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'colorize',   '~> 0.7'
   s.add_runtime_dependency 'rake',       '~> 10.3'
-  s.add_runtime_dependency 'edst',       '~> 0.33'
+  s.add_runtime_dependency 'edst',       '~> 0.32'
   # dev
   s.add_development_dependency 'codeclimate-test-reporter', '~> 0'
   s.add_development_dependency 'simplecov', '~> 0'
