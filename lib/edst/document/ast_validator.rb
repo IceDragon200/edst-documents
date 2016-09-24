@@ -45,7 +45,7 @@ module EDST
         if stats.found_first
           unless @allow_multiple
             if @key == node.key
-              handle_error stats, ValidationError.new("Multiple nodes of (#{child.ast_string}) are not allowed (offender: #{node.debug_string})")
+              handle_error stats, ValidationError.new("Multiple nodes of (#{node.ast_string}) are not allowed (offender: #{node.debug_string})")
             end
           end
 
@@ -53,8 +53,8 @@ module EDST
             # we are guaranteed that the provided node will be a variant of the given
             # but if variants are not allowed, and the keys do not match, then that is considered an
             # error
-            if @key != child.key
-              handle_error stats, ValidationError.new("Variant nodes of (#{child.ast_string}) are not allowed (offender: #{node.debug_string})")
+            if @key != node.key
+              handle_error stats, ValidationError.new("Variant nodes of (#{node.ast_string}) are not allowed (offender: #{node.debug_string})")
             end
           end
         end
