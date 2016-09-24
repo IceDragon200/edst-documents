@@ -1,7 +1,10 @@
 require 'edst/ast'
+require 'edst/document/node_helpers'
 
 module EDST
   class AST
+    include EDST::Document::NodeHelpers
+
     # Returns a String defining the AST
     #
     # @return [String]
