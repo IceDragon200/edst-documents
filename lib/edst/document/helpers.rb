@@ -8,9 +8,10 @@ module EDST
     # Loads and parses filename as an EDST file
     #
     # @param [String] filename
+    # @param [Hash<Symbol, Object>] options
     # @return [AST]
-    def self.load_file(filename)
-      EDST.parse(File.read(filename))
+    def self.load_file(filename, options = {})
+      EDST.parse(File.read(filename), { filename: filename }.merge(options))
     end
 
     # Creates a :list node, from the given strings
