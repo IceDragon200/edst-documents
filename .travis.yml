@@ -4,8 +4,7 @@ addons:
   code_climate:
     repo_token: 00b7dc7ca5461ca7decc053db7cc9e918ebb95b770e32742414a268b20331e1c
 rvm:
-- 2.1
-- 2.2
+- 2.3.1
 matrix:
   allow_failures:
     - rvm: ruby-head
