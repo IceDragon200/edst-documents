@@ -1,4 +1,3 @@
-require 'codeclimate-test-reporter'
 require 'simplecov'
 
 def fixture_pathname(name)
@@ -7,7 +6,6 @@ end
 
 require 'edst'
 
-CodeClimate::TestReporter.start
 SimpleCov.start
 
 require 'edst/document'
