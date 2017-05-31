@@ -1,4 +1,4 @@
-require 'edst/document/schema_types'
+require_relative 'schema_types'
 
 module EDST
   module Document

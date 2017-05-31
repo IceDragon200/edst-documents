@@ -1,7 +1,5 @@
-lib = File.join(File.dirname(__FILE__), 'lib')
-$:.unshift lib unless $:.include?(lib)
-
-require 'edst/document/version'
+require_relative 'lib/edst/document/version'
+require 'date'
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY

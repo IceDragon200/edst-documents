@@ -1,7 +1,7 @@
 require 'edst'
 require 'edst/ast'
-require 'edst/document/schemas'
-require 'edst/document/list_validator'
+require_relative 'schemas'
+require_relative 'list_validator'
 
 module EDST
   module Document

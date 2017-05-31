@@ -1,5 +1,5 @@
-require 'edst/document/ast_validator'
-require 'edst/document/schema_validator'
+require_relative 'ast_validator'
+require_relative 'schema_validator'
 
 module EDST
   module Document

@@ -1,7 +1,7 @@
-require 'edst/document/core_ext'
-require 'edst/document/validation_error'
-require 'edst/document/stats'
-require 'edst/document/base_validator'
+require_relative 'core_ext'
+require_relative 'validation_error'
+require_relative 'stats'
+require_relative 'base_validator'
 
 module EDST
   module Document

@@ -1,5 +1,5 @@
-require 'edst/document/schema_types'
-require 'edst/document/schema_builder'
+require_relative 'schema_types'
+require_relative 'schema_builder'
 
 module EDST
   module Document

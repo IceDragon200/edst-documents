@@ -1,5 +1,5 @@
-require 'edst/document/base_validator'
-require 'edst/document/validation_error'
+require_relative 'base_validator'
+require_relative 'validation_error'
 
 module EDST
   module Document

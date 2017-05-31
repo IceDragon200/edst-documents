@@ -1,5 +1,5 @@
-require 'edst/document/schemas'
-require 'edst/document/edst_ext/ast'
+require_relative 'schemas'
+require_relative 'edst_ext/ast'
 require 'edst/ast'
 
 module EDST

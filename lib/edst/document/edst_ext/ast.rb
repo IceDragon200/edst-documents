@@ -1,5 +1,5 @@
 require 'edst/ast'
-require 'edst/document/node_helpers'
+require_relative '../node_helpers'
 
 module EDST
   class AST
