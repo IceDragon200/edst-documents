@@ -43,7 +43,7 @@ module EDST
       #
       #       Are all considered variants of note
       def node(kind, name, **options, &block)
-        data = patch_options(options).merge(
+        data = patch_options(**options).merge(
           enum: options[:enum],
           # '*' means any type
           type: options.fetch(:type, '*'),
@@ -57,7 +57,7 @@ module EDST
           data[:children] = SchemaBuilder.new(&block).schema_fields
         end
 
-        schema_fields << AstValidator.new(kind, data)
+        schema_fields << AstValidator.new(kind, **data)
       end
 
       # Defines a div node, see {#node} for details on +options+
@@ -65,18 +65,18 @@ module EDST
       # @param [Symbol, String] name
       # @param [Hash<Symbol, Object>] options
       def div(name, **options, &block)
-        node(:div, name, options, &block)
+        node(:div, name, **options, &block)
       end
 
       # Defines a new tag node, see {#node} for details on +options+
       #
       # @param [Symbol, String] name
       def tag(name, **options)
-        node(:tag, name, options)
+        node(:tag, name, **options)
       end
 
       def schema(name, **options)
-        schema_fields << SchemaValidator.new(name, patch_options(options))
+        schema_fields << SchemaValidator.new(name, **patch_options(**options))
       end
     end
   end

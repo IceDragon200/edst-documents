@@ -2,4 +2,4 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'edst', github: 'IceDragon200/edst'
+gem 'edst', '~> 1.0', github: 'IceDragon200/edst'
